@@ -112,6 +112,22 @@ jobs:
             grub-mkconfig -o /boot/grub/grub.cfg;
             restorecon -RF /'
 
+      - name: DEBUG ps
+        run: |
+          sudo ps -efH || true
+
+      - name: DEBUG mount
+        run: |
+          sudo mount || true
+
+      - name: DEBUG findmnt
+        run: |
+          sudo findmnt || true
+
+      - name: DEBUG lsof
+        run: |
+          sudo lsof || true
+
       - name: Unmount loop devices and convert the QEMU image to qcow2
         run: |
           sudo umount /tmp/boots/mnt
